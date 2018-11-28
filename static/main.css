@@ -1,0 +1,97 @@
+/* Animation from https://codepen.io/thejamespower/pen/OVNYLL */
+
+#wrapper {
+  display: block;
+  width: 1000px;
+  margin: 4em auto;
+  text-align: center;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+#header {
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  border-bottom: 3px solid black;
+}
+
+#file {
+  display: None;
+}
+
+.btn {
+  background-color: white;
+  color:#000;
+  display: block;
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 20px;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 2px solid black;
+  box-shadow: none;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  overflow:hidden;
+  transition: .3s;
+  width: 135px;
+  height: 20px;
+  font-size: 17px;
+}
+
+.btn::after {
+  position: absolute;
+  transition: .3s;
+  content: '';
+  width: 0;
+  left: 50%;
+  bottom: 0;
+  height: 3px;
+  background: #000;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+#submit-btn {
+  display: block;
+
+}
+
+#total-wrap {
+  width: 100%;
+}
+
+#submit-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#upload-wrapper {
+  width: 200px;
+  display: inline-block;
+}
+
+#image-wrap {
+  display: inline-block;
+  padding: 1em;
+  margin: 1em;
+  width: 600px;
+  height: 400px;
+  background-color:black;
+}
+
+#image-preview {
+  max-width: 100%;
+  max-height: 100%;
+}

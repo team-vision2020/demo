@@ -1,0 +1,35 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Filter Inverter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3/dist/tf.min.js"> </script>
+    <script src="/static/main.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="total-wrap"> 
+            <h1 id="header">
+                Filter Inverter
+            </h1>
+            <div id="submit-wrap">
+                <div class="upload-wrapper">
+                    <label for="file" class="btn">Select a File</label>
+                    <input type="file" name="file" id="file" accept="image/*"/>
+                    <div class="btn" id="submit-btn">Invert</div>
+                </div>
+                <div id="image-wrap">
+                    <p id="detected-filter"></p>
+                    <img id="image-preview" alt="Image to Invert">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>
