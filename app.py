@@ -46,14 +46,17 @@ def process_photo():
         filename = secure_filename(file.filename)
         # Workaround saving and reloading
         save_route = os.path.join(app.config['UPLOAD_FOLDER'], filename) 
+        file_parts = filename.rsplit('.', 1)
+        invert_name = '{}_invert.{}'.format(file_parts[0], file_parts[1])
+        invert_route = os.path.join(app.config['UPLOAD_FOLDER'], invert_name)
         file.save(save_route)
-        im = image_from_path(save_route)
-        identified_filter = predict_best(im, classifier)
+        im = image_from_path(save_route)[..., :3] # Presumably int input, trim alpha
+        int_im = (255 * im).astype(np.uint8)
+        identified_filter = predict_best(int_im, classifier)
         inverted_image = inverter.invert(im, identified_filter)
-        print(inverted_image)
-        im = Image.fromarray(inverted_image.astype(np.uint8))
-        im.save(save_route)
-        return jsonify({"img_url": filename, "filter": identified_filter})
+        im = Image.fromarray((inverted_image * 255).astype(np.uint8))
+        im.save('{}'.format(invert_route))
+        return jsonify({"img_url": filename, "invert_url": invert_name, "filter": identified_filter})
 
 @app.route('/')
 def home():

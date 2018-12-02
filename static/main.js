@@ -7,8 +7,11 @@ $( document ).ready(function() {
     $("#file").change(function() {
         readURL(this);
         enableSubmit();
+        $('#image-invert').hide();
+        $('#detected-filter').hide();
     });
     $('#image-preview').hide();
+    $('#image-invert').hide();
     $('#submit-btn').click(processInvert);
 });
 
@@ -67,9 +70,12 @@ const processInvert = () => {
     /* Loading state here */
 };
 
-const showResults = ({img_url, filter}) => {
+const showResults = ({img_url, invert_url, filter}) => {
     const capital = filter.substring(0,1).toUpperCase() + filter.substring(1);
     $('#image-preview').attr('src', `/static/uploads/${img_url}`);
+    $('#image-invert').attr('src', `/static/uploads/${invert_url}`);
+    $('#image-invert').show();
     $('#detected-filter').html(`Detected: ${capital}`);
+    $('#detected-filter').show();
 };
   

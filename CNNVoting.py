@@ -14,7 +14,7 @@ def split_img(img):
             x_start = i * 32
             y_start = j * 32
             img_small.append(img[x_start:x_start + 32, y_start:y_start + 32])
-    return np.asarray(img_small)
+    return np.asarray(img_small)[..., :3] # Trim alpha channel if it exists
 
 # Provides most popular prediction given an array of probabilities
 def prediction_voting(predict):

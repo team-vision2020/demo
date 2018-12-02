@@ -69,6 +69,8 @@ class Inverter(object):
         trained_models = [load_model(filter_type) for filter_type in all_filter_types]
         for model, filter_type in trained_models:
             self.models[filter_type] = model
+            model._make_predict_function()
+
 
         print("Loaded all models.")
 
